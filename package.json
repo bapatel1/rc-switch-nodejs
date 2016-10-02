@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "rpi-433": "^2.1.0",
+    "twilio": "^2.11.0"
   }
 }

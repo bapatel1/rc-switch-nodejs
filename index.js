@@ -7,15 +7,15 @@ var twilio = require('twilio');
 
 var rpi433    = require('rpi-433'),
     rfSniffer = rpi433.sniffer({
-      pin: 2,                     //Snif on GPIO 2 (or Physical PIN 13) 
-      debounceDelay: 500          //Wait 500ms before reading another code 
+      pin: 2,                     //Snif on GPIO 2 (or Physical PIN 13)
+      debounceDelay: 500          //Wait 500ms before reading another code
     }),
     rfEmitter = rpi433.emitter({
-      pin: 0,                     //Send through GPIO 0 (or Physical PIN 11) 
-      pulseLength: 350            //Send the code with a 350 pulse length 
+      pin: 0,                     //Send through GPIO 0 (or Physical PIN 11)
+      pulseLength: 186            //Send the code with a 350 pulse length
     });
- 
-// Receive (data is like {code: xxx, pulseLength: xxx}) 
+
+// Receive (data is like {code: xxx, pulseLength: xxx})
 rfSniffer.on('data', function (data) {
   console.log('Code received: '+data.code+' pulse length : '+data.pulseLength);
   if(data.code === 5592405){
@@ -26,7 +26,13 @@ rfSniffer.on('data', function (data) {
           from: '+18482604008',
           body: 'Hello Seems like Garage Door Open!'
     });
-   
+
     console.log("Text Sent!");
   }
+});
+
+
+// Send
+rfEmitter.sendCode(4199875, function(error, stdout) {   //Send 1234 
+  if(!error) console.log(stdout); //Should display 1234
 });

@@ -33,6 +33,11 @@ rfSniffer.on('data', function (data) {
 
 
 // Send
-rfEmitter.sendCode(4199875, function(error, stdout) {   //Send 1234 
-  if(!error) console.log(stdout); //Should display 1234
+rfEmitter.sendCode(4199875, function(error, stdout) {   //Send 4199875 
+  if(!error) console.log(stdout); //Should display 4199875
+  setTimeout(()=>{
+    rfEmitter.sendCode(4199884,(error,stdout){
+      if(!error) console.log(stdout); //Should display 4199884
+    })
+  },2000)
 });

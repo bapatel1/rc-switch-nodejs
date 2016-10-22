@@ -10,7 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
+    "onoff": "^1.1.1",
+    "pi-pir-sensor": "0.0.3",
     "rpi-433": "^2.1.0",
+    "rpi-gpio": "^0.7.0",
     "twilio": "^2.11.0"
   }
 }
